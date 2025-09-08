@@ -5,7 +5,7 @@ const Menu = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-white shadow-md relative">
+    <nav className="flex items-center justify-between p-4 bg-white shadow-md relative font-serif">
       {/* لوگو */}
       <h1 className="font-bold text-3xl">KARPET</h1>
 
