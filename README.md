@@ -1,12 +1,47 @@
-# React + Vite
+# README.md - KARPET Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 معرفی
+لندینگ پیج حرفه‌ای برای نمایشگاه فرش KARPET، ساخته شده با **React** و **Tailwind CSS**. شامل هدر responsive، هیرو اسلایدر (تعویض هر ۱۰ ثانیه)، کالکشن‌های فرش (با hover effect)، CTA، و فوتر کامل. طراحی RTL، responsive، و با تم هنری ایرانی.
 
-Currently, two official plugins are available:
+**ویژگی‌ها:**
+- Responsive (موبایل/تبلت/دسکتاپ)
+- اسلایدر هیرو با ناوبری
+- کالکشن‌ها با overlay و لینک
+- react-icons برای آیکون‌ها
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ فناوری‌ها
+- **React 18+**: برای ساخت کامپوننت‌ها و state management (مثل useState برای اسلایدر).
+- **Tailwind CSS 3+**: برای استایلینگ utility-first، responsive classes (sm:, md:)، و RTL پشتیبانی.
+- **react-icons**: برای آیکون‌های SVG (مثل FaInstagram در فوتر).
+- **Vite**: به عنوان build tool برای توسعه سریع و hot reload.
 
-## Expanding the ESLint configuration
+## 📦 نصب و راه‌اندازی
+1. **کلون**:
+   ```bash
+   git clone https://github.com/yourusername/karpet-landing.git
+   cd karpet-landing
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **نصب وابستگی‌ها**:
+   ```bash
+   npm install
+   ```
+
+3. **اجرا**:
+   ```bash
+   npm run dev
+   ```
+   - باز می‌شه در `http://localhost:5173`
+
+4. **بیلد**:
+   ```bash
+   npm run build
+   ```
+
+**نکته**: تصاویر رو در `src/assets/` بذار. RTL: `dir="rtl"` در HTML اضافه کن.
+
+## 📱 دمو
+[لینک دمو](https://your-app.vercel.app)
+
+## 🤝 تماس
+[راه‌های ارتباطی خودت رو اضافه کن]
