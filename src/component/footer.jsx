@@ -2,7 +2,8 @@ import React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { RiTelegram2Fill } from "react-icons/ri";
 import { FaWhatsapp } from "react-icons/fa6";
-
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 
 const Footer = () => {

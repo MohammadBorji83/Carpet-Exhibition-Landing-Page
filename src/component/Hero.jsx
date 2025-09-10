@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from "framer-motion";
 import hero1 from "../assets/HERO1.jpg";
 import hero2 from "../assets/HERO2.jpg";
 
@@ -41,51 +43,99 @@ const HeroSlider = () => {
 
   const currentHero = heroes[currentIndex];
 
+  // انیمیشن برای متن و تصویر
+  const contentVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { 
+        type: "spring", 
+        stiffness: 100, 
+        damping: 20, 
+        duration: 0.5 
+      }
+    },
+    exit: { opacity: 0, x: -50, transition: { duration: 0.3 } }
+  };
+
   return (
-    <section className="container mx-auto px-4 py-16 dir-rtl relative font-serif bg-gray-200">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[80vh] transition-all duration-500 ease-in-out">
+    <motion.section
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="container mx-auto px-4 py-16 dir-rtl relative font-serif bg-gray-200"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[80vh]">
         {/* متن */}
-        <div className="flex flex-col items-start space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
-            {currentHero.title}
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            {currentHero.description}
-          </p>
-          <div className="md:mx-56">
-            <button className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors">
-              {currentHero.buttonText}
-            </button>
-          </div>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex + "-text"}
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex flex-col items-start space-y-6"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
+              {currentHero.title}
+            </h1>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {currentHero.description}
+            </p>
+            <div className="md:mx-56">
+              <motion.button
+                variants={contentVariants}
+                className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors"
+              >
+                {currentHero.buttonText}
+              </motion.button>
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* تصویر */}
-        <div className="w-full relative">
-          <img
-            className="w-full h-[400px] md:h-[500px] object-cover rounded-lg shadow-lg"
-            src={currentHero.image}
-            alt={currentHero.alt}
-            loading="eager"
-          />
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex + "-image"}
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="w-full relative"
+          >
+            <img
+              className="w-full h-[400px] md:h-[500px] object-cover rounded-lg shadow-lg"
+              src={currentHero.image}
+              alt={currentHero.alt}
+              loading="eager"
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* دکمه‌های قبلی/بعدی */}
-      <button
+      <motion.button
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         onClick={prevSlide}
         className="absolute left-2 bottom-4 md:left-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white/70 p-3 md:p-2 rounded-full hover:bg-white transition-colors z-10 text-2xl md:text-xl"
         aria-label="اسلاید قبلی"
       >
         &larr;
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         onClick={nextSlide}
         className="absolute right-2 bottom-4 md:right-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white/70 p-3 md:p-2 rounded-full hover:bg-white transition-colors z-10 text-2xl md:text-xl"
         aria-label="اسلاید بعدی"
       >
         &rarr;
-      </button>
-    </section>
+      </motion.button>
+    </motion.section>
   );
 };
 

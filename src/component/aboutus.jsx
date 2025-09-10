@@ -1,5 +1,7 @@
 import React from "react";
 import about from "../assets/about.jpg";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const About = ()=>{
 
