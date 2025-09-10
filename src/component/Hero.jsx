@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import hero1 from "../assets/HERO1.jpg";
-import hero2 from "../assets/HERO2.jpg"; 
+import hero2 from "../assets/HERO2.jpg";
 
 const HeroSlider = () => {
   const heroes = [
@@ -26,17 +26,15 @@ const HeroSlider = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % heroes.length);
-    }, 10000); // ۱۰ ثانیه = ۱۰۰۰۰ میلی‌ثانیه
+    }, 10000);
 
-    return () => clearInterval(timer); // cleanup
+    return () => clearInterval(timer);
   }, [heroes.length]);
 
-  // تابع برای بعدی
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % heroes.length);
   };
 
-  // تابع برای قبلی
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + heroes.length) % heroes.length);
   };
@@ -55,19 +53,19 @@ const HeroSlider = () => {
             {currentHero.description}
           </p>
           <div className="md:mx-56">
-             <button className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors ">
-            {currentHero.buttonText}
-          </button>
+            <button className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors">
+              {currentHero.buttonText}
+            </button>
           </div>
-         
         </div>
 
         {/* تصویر */}
-        <div className="w-full">
+        <div className="w-full relative">
           <img
             className="w-full h-[400px] md:h-[500px] object-cover rounded-lg shadow-lg"
             src={currentHero.image}
             alt={currentHero.alt}
+            loading="eager"
           />
         </div>
       </div>
@@ -75,15 +73,17 @@ const HeroSlider = () => {
       {/* دکمه‌های قبلی/بعدی */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition-colors"
+        className="absolute left-2 bottom-4 md:left-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white/70 p-3 md:p-2 rounded-full hover:bg-white transition-colors z-10 text-2xl md:text-xl"
+        aria-label="اسلاید قبلی"
       >
-        &larr; {/* فلش چپ برای قبلی */}
+        &larr;
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition-colors"
+        className="absolute right-2 bottom-4 md:right-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white/70 p-3 md:p-2 rounded-full hover:bg-white transition-colors z-10 text-2xl md:text-xl"
+        aria-label="اسلاید بعدی"
       >
-        &rarr; {/* فلش راست برای بعدی */}
+        &rarr;
       </button>
     </section>
   );
